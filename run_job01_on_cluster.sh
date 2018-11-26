@@ -3,7 +3,7 @@
 #PBS -N tf_horovod_single_node_multi-gpus
 #PBS -l select=1:ncpus=40:ngpus=4:mpiprocs=4
 #PBS -l walltime=48:00:00
-#PBS -q gp4
+#PBS -q gp_ind
 #PBS -j oe
 #PBS -M seanyu@aetherai.com
 #PBS -m be 
