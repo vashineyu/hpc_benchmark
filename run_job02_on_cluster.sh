@@ -22,7 +22,7 @@ echo Start Running the Program
 
 cd $PBS_O_WORKDIR
 echo $PBS_NODEFILE
-target_dir='record/experiment-2_node_4_gpu'
+target_dir='record/experiment-2_node_4_gpu_2'
 start_time=`date +%s`
 mpirun -np 8 \
        -hostfile $PBS_NODEFILE \
