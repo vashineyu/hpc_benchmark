@@ -144,9 +144,13 @@ class DataGenerator():
     def _open_pickle(self):
         while True:
             for this_file in self.dlist:
-                with open(this_file, 'rb') as f:
-                    obj = pickle.load(f)
-                yield obj
+                try:
+                    with open(this_file, 'rb') as f:
+                        obj = pickle.load(f)
+                    yield obj
+                except:
+                    # conflict with multi-accessing, ignore now
+                    pass
                 
             # After loop all files, shuffle the list
             random.shuffle(self.dlist)

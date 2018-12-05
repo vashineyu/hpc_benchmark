@@ -31,7 +31,7 @@ sys.path.append(os.path.join(bin_root, "model_inception_resnet"))
 from resnet import *
 
 pretrain_model = "resnet_50"
-num_epochs = 10
+num_epochs = 5
 
 #####################
 PRETRAIN_DICT = {'resnet_50': model_collection_path + '/resnet_v2_50/model.ckpt',
@@ -55,10 +55,16 @@ CORRESPONDING_LAYERS = {
     'resnet_152': 'resnet_v2_152/block4/unit_3/bottleneck_v2/add:0'
 }
 
-if os.path.exists(FLAGS.result_dir):
+try:
+    os.mkdir(FLAGS.result_dir)
+except:
     pass
-else:
-    os.makedirs(FLAGS.result_dir)
+
+#if os.path.exists(FLAGS.result_dir):
+#    pass
+#else:
+#    os.makedirs(FLAGS.result_dir)
+
 #####################
 ### Data Pipeline ###
 #####################

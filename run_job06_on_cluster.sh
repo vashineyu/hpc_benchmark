@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -P ENT107087
 #PBS -N tf_horovod_single_node_multi-gpus
-#PBS -l select=1:ncpus=40:ngpus=4:mpiprocs=4
+#PBS -l select=1:ncpus=24:ngpus=2:mpiprocs=2
 #PBS -l walltime=48:00:00
 #PBS -q gp4
 #PBS -j oe
@@ -22,13 +22,12 @@ echo Start Running the Program
 
 cd $PBS_O_WORKDIR
 echo $PBS_NODEFILE
-target_dir='record/experiment-1_node_4_gpu_40cpu'
+target_dir='record/experiment-1_node_2_gpu'
 start_time=`date +%s`
-mpirun -np 4 \
+mpirun -np 2 \
        -hostfile $PBS_NODEFILE \
        -bind-to none -map-by slot \
        -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH \
-       -mca pml ob1 -mca btl ^openib \
        python run.py --result_dir ${target_dir}
 
 end_time=`date +%s`

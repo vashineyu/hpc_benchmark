@@ -1,8 +1,8 @@
 #!/bin/bash
 #PBS -P ENT107087
-#PBS -N tf_horovod_single_node_multi-gpus
+#PBS -N tfh_1-4
 #PBS -l select=1:ncpus=40:ngpus=4:mpiprocs=4
-#PBS -l walltime=48:00:00
+#PBS -l walltime=24:00:00
 #PBS -q gp4
 #PBS -j oe
 #PBS -M seanyu@aetherai.com
@@ -15,21 +15,20 @@ module load anaconda3/5.1.10
 module load openmpi/gcc/64/1.10.4
 echo $PBS_O_WORKDIR
 
-#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/aetherai2018/ # fix libcuda.so.1 error # already ln -s /pkg/cuda9.1/lib64/stubs/...
 ./init_environment.sh
 source activate tf_keras
 echo Start Running the Program
 
 cd $PBS_O_WORKDIR
 echo $PBS_NODEFILE
-target_dir='record/experiment-1_node_4_gpu_40cpu'
+target_dir='record_syndata/experiment-1_node_4_gpu_40_cpu'
 start_time=`date +%s`
 mpirun -np 4 \
        -hostfile $PBS_NODEFILE \
        -bind-to none -map-by slot \
        -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH \
        -mca pml ob1 -mca btl ^openib \
-       python run.py --result_dir ${target_dir}
+       python run_fakedata.py --result_dir ${target_dir}
 
 end_time=`date +%s`
 runtime=$((end_time-start_time))
