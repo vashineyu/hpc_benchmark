@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -P ENT107087
 #PBS -N tfh_4-2
-#PBS -l select=4:ncpus=40:ngpus=2:mpiprocs=8
+#PBS -l select=4:ncpus=40:ngpus=2:mpiprocs=2
 #PBS -l walltime=24:00:00
 #PBS -q gp16
 #PBS -j oe

@@ -1,8 +1,8 @@
 #!/bin/bash
 #PBS -P ENT107087
 #PBS -N tf_horovod_four_node_multi-gpus
-#PBS -l select=4:ncpus=24:ngpus=4:mpiprocs=4
-#PBS -l walltime=48:00:00
+#PBS -l select=4:ncpus=40:ngpus=4:mpiprocs=4
+#PBS -l walltime=24:00:00
 #PBS -q gp16
 #PBS -j oe
 #PBS -M seanyu@aetherai.com
@@ -22,7 +22,7 @@ echo Start Running the Program
 
 cd $PBS_O_WORKDIR
 echo $PBS_NODEFILE
-target_dir='record/experiment-4_node_4_gpu'
+target_dir='record/experiment-4_node_4_gpu_40_cpu'
 start_time=`date +%s`
 mpirun -np 16 \
        -hostfile $PBS_NODEFILE \
