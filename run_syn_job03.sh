@@ -21,7 +21,7 @@ echo Start Running the Program
 
 cd $PBS_O_WORKDIR
 echo $PBS_NODEFILE
-target_dir='record_syndata/experiment-1_node_4_gpu_40_cpu'
+target_dir='record_syndata/experiment-1_node_4_gpu_40_cpu_v2'
 start_time=`date +%s`
 mpirun -np 4 \
        -hostfile $PBS_NODEFILE \

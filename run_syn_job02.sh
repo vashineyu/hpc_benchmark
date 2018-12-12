@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -P ENT107087
 #PBS -N tfh_1-2
-#PBS -l select=1:ncpus=40:ngpus=2:mpiprocs=2
+#PBS -l select=1:ncpus=20:ngpus=2:mpiprocs=2
 #PBS -l walltime=24:00:00
 #PBS -q gp4
 #PBS -j oe
@@ -21,7 +21,7 @@ echo Start Running the Program
 
 cd $PBS_O_WORKDIR
 echo $PBS_NODEFILE
-target_dir='record_syndata/experiment-1_node_2_gpu_40_cpu'
+target_dir='record_syndata/experiment-1_node_2_gpu_20_cpu_v2'
 start_time=`date +%s`
 mpirun -np 2 \
        -hostfile $PBS_NODEFILE \
