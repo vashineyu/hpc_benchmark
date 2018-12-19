@@ -1,0 +1,14 @@
+name: tf_keras
+dependencies:
+  - python=3.6
+  - jupyter
+  - numpy
+  - pandas
+  - matplotlib
+  - tensorflow-gpu==1.8
+  - keras
+  - tqdm
+  - opencv
+  - scikit-learn
+  - h5py
+
